@@ -21,5 +21,10 @@
     android:drawable="@drawable/spinner_white_48"
     android:pivotX="50%"
     android:pivotY="50%"
+<<<<<<< HEAD
     android:framesCount="60"
     android:frameDuration="20" />
+=======
+    android:framesCount="48"
+    android:frameDuration="25" />
+>>>>>>> fd3ef6e... Smooth Spinners: Makes the loading "spinner" animation smoother in non-holo apps
