@@ -542,6 +542,11 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         tv.dismissTask(0L);
     }
 
+    private boolean dismissAll() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.RECENTS_CLEAR_ALL_DISMISS_ALL, 0) == 1;
+    }
+
     /** Resets the focused task. */
     void resetFocusedTask() {
         if ((0 <= mFocusedTaskIndex) && (mFocusedTaskIndex < mStack.getTaskCount())) {
@@ -561,7 +566,7 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
         // Remove visible TaskViews
         long dismissDelay = 0;
         int childCount = getChildCount();
-        if (childCount > 0) {
+        if (dismissAll() && childCount > 0) {
             int delay = mConfig.taskViewRemoveAnimDuration / childCount;
             for (int i = 0; i < childCount; i++) {
                 TaskView tv = (TaskView) getChildAt(i);
@@ -570,13 +575,13 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 dismissDelay += delay;
             }
         }
-
-        // Remove any other Tasks
-        for (Task t : tasks) {
-            if (mStack.getTasks().contains(t)) {
-                mStack.removeTask(t);
-            }
-        }
+	
+	// Remove any other Tasks
+	for (Task t : tasks) {
+	    if (mStack.getTasks().contains(t)) {
+		mStack.removeTask(t);
+	    }
+	}
 
         // removeAllUserTask() can take upwards of two seconds to execute so post
         // a delayed runnable to run this code once we are done animating
@@ -585,8 +590,8 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
             public void run() {
                 // And remove all the excluded or all the other tasks
                 SystemServicesProxy ssp = RecentsTaskLoader.getInstance().getSystemServicesProxy();
-                ssp.removeAllUserTask(UserHandle.myUserId());
-            }
+		ssp.removeAllUserTask(UserHandle.myUserId());
+	    }
         }, mConfig.taskViewRemoveAnimDuration);
     }
 
