@@ -43,8 +43,6 @@
   <string name="permdesc_changePrivacyGuardState">Omogoča programu spreminjanje, ali se drug program izvaja s Privacy Guardom. Kadar se program izvaja s Privacy Guardom, ne bo imel dostopa do osebnih podatkov, kot so stiki, dnevniki klicev ali sporočila.</string>
   <string name="privacy_guard_notification">Privacy Guard dejaven</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ne bo imel dostopa do osebnih podatkov</string>
-  <string name="permlab_useHardwareFramework">uporaba strojnega ogrodja</string>
-  <string name="permdesc_useHardwareFramework">Omogoča programu dostop do strojnega ogrodja CM.</string>
   <string name="permlab_setKeyguardWallpaper">nastavitev slike ozadja keyguard</string>
   <string name="permdesc_setKeyguardWallpaper">Omogoča programu spreminjanje slike ozadja zaslona za zaklepanje.</string>
   <string name="privacy_guard_dialog_title">Privacy Guard</string>
@@ -169,8 +167,8 @@
   <string name="sd_ext_media_checking_notification_message">Preverjanje kartice SD za napake.</string>
   <string name="sd_ext_media_nofs_notification_title">Prazna SD kartica</string>
   <string name="sd_ext_media_nofs_notification_message">SD kartica je prazna ali pa ima nepodprt datotečni sistem.</string>
-  <string name="sd_ext_media_unmountable_notification_title">Poškodovana SD kartica</string>
-  <string name="sd_ext_media_unmountable_notification_message">SD kartica je poškodovana. Poskusite jo ponovno formatirati.</string>
+  <string name="sd_ext_media_unmountable_notification_title">Poškodovana kartica SD</string>
+  <string name="sd_ext_media_unmountable_notification_message">Kartica SD je poškodovana. Poskusite jo ponovno formatirati.</string>
   <string name="sd_ext_media_badremoval_notification_title">SD kartica nepričakovano odstranjena</string>
   <string name="sd_ext_media_badremoval_notification_message">Odklopite kartico SD pred odstranitvijo, da preprečite izgubo podatkov.</string>
   <string name="sd_ext_media_safe_unmount_notification_title">SD kartico lahko varno odstranite</string>

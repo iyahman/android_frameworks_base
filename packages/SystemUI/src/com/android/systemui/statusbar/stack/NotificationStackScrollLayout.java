@@ -348,6 +348,15 @@ public class NotificationStackScrollLayout extends ViewGroup
         requestChildrenUpdate();
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mChildrenUpdater != null) {
+            getViewTreeObserver().removeOnPreDrawListener(mChildrenUpdater);
+            mChildrenUpdater = null;
+        }
+    }
+
     private void requestAnimationOnViewResize() {
         if (mRequestViewResizeAnimationOnLayout && mIsExpanded && mAnimationsEnabled) {
             mNeedViewResizeAnimation = true;
@@ -734,9 +743,6 @@ public class NotificationStackScrollLayout extends ViewGroup
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (ev.getActionMasked() == MotionEvent.ACTION_UP) {
-            mPhoneStatusBar.setVisualizerTouching(false);
-        }
         boolean isCancelOrUp = ev.getActionMasked() == MotionEvent.ACTION_CANCEL
                 || ev.getActionMasked()== MotionEvent.ACTION_UP;
         if (mDelegateToScrollView) {

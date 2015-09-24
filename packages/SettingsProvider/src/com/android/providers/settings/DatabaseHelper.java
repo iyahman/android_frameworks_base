@@ -689,6 +689,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                    Secure.LOCK_PATTERN_ENABLED,
                    Secure.LOCK_PATTERN_VISIBLE,
                    Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED,
+                   Secure.LOCK_PASS_TO_SECURITY_VIEW,
                    Secure.LOCK_PATTERN_SIZE,
                    Secure.LOCK_DOTS_VISIBLE,
                    Secure.LOCK_SHOW_ERROR_PATH,
@@ -2538,6 +2539,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             loadBooleanSetting(stmt, Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
                     R.bool.def_swap_volume_keys_on_rotation);
 
+            loadIntegerSetting(stmt, Settings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+                    R.integer.def_notification_brightness_level);
+
+            loadBooleanSetting(stmt, Settings.System.SYSTEM_PROFILES_ENABLED,
+                    R.bool.def_system_profiles_enabled);
+
         } finally {
             if (stmt != null) stmt.close();
         }
@@ -2698,9 +2705,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             loadBooleanSetting(stmt, Settings.Secure.STATS_COLLECTION,
                     R.bool.def_cm_stats_collection);
-
-            loadBooleanSetting(stmt, Settings.Secure.ADVANCED_MODE,
-                    com.android.internal.R.bool.config_advancedSettingsMode);
 
             loadBooleanSetting(stmt, Settings.Secure.SPELL_CHECKER_ENABLED,
                     R.bool.def_spell_checker);

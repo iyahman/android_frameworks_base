@@ -1234,6 +1234,7 @@ public final class Settings {
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_ENABLED);
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_VISIBLE);
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED);
+            MOVED_TO_SECURE.add(Secure.LOCK_PASS_TO_SECURITY_VIEW);
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_SIZE);
             MOVED_TO_SECURE.add(Secure.LOCK_DOTS_VISIBLE);
             MOVED_TO_SECURE.add(Secure.LOCK_SHOW_ERROR_PATH);
@@ -2821,6 +2822,21 @@ public final class Settings {
         public static final String SHOW_WEB_SUGGESTIONS = "show_web_suggestions";
 
         /**
+         * Contains the notifications light maximum brightness to use.
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL =
+                "notification_light_brightness_level";
+
+        /**
+         * Whether to allow notifications with the screen on or DayDreams.
+         * The value is boolean (1 or 0). Default will always be false.
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_SCREEN_ON =
+                "notification_light_screen_on_enable";
+
+        /**
          * Whether the notification LED should repeatedly flash when a notification is
          * pending. The value is boolean (1 or 0).
          * @hide
@@ -3651,7 +3667,9 @@ public final class Settings {
             DISPLAY_AUTO_OUTDOOR_MODE,
             LIVE_DISPLAY_HINTED,
             NONE_IS_SILENT,
-            ALLOW_LIGHTS
+            ALLOW_LIGHTS,
+            NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+            NOTIFICATION_LIGHT_SCREEN_ON
         };
 
         /**
@@ -3952,6 +3970,7 @@ public final class Settings {
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_ENABLED);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_VISIBLE);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED);
+            MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PASS_TO_SECURITY_VIEW);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_SIZE);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_DOTS_VISIBLE);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_SHOW_ERROR_PATH);
@@ -4725,6 +4744,12 @@ public final class Settings {
         @Deprecated
         public static final String
                 LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED = "lock_pattern_tactile_feedback_enabled";
+
+        /**
+         * Whether keyguard will direct show security view (0 = false, 1 = true)
+         * @hide
+         */
+        public static final String LOCK_PASS_TO_SECURITY_VIEW = "lock_screen_pass_to_security_view";
 
         /**
          * Determines the width and height of the LockPatternView widget
@@ -5946,6 +5971,12 @@ public final class Settings {
         public static final String PRIVACY_GUARD_DEFAULT = "privacy_guard_default";
 
         /**
+         * Whether a notification should be shown if privacy guard is enabled
+         * @hide
+         */
+        public static final String PRIVACY_GUARD_NOTIFICATION = "privacy_guard_notification";
+
+        /**
          * Default theme to use.  If empty, use holo.
          * @hide
          */
@@ -6107,11 +6138,20 @@ public final class Settings {
         public static final String LIVE_DISPLAY_COLOR_MATRIX = "live_display_color_matrix";
 
         /**
-         * Whether to show the lockscreen visualizer.
-         * 0 will disable it, anything else will enable it. Default is on.
+         * Whether to show the keyguard visualizer.
+         * Boolean setting. 0 = no, 1 = yes.
          * @hide
          */
         public static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer";
+
+        /**
+         * Whether to show quick settings tiles with sensitive data in secure lockscreens.
+         * 0 will ignore the sensitive data flag, anything else will take care of that
+         * flag. Default is off.
+         * @hide
+         */
+        public static final String LOCKSCREEN_HIDE_TILES_WITH_SENSITIVE_DATA =
+                "lockscreen_hide_qs_tiles_with_sensitive_data";
 
         /**
          * This are the settings to be backed up.
@@ -6166,7 +6206,8 @@ public final class Settings {
             SLEEP_TIMEOUT,
             PRIVACY_GUARD_DEFAULT,
             ADVANCED_REBOOT,
-            DEVELOPMENT_SHORTCUT
+            DEVELOPMENT_SHORTCUT,
+            PRIVACY_GUARD_NOTIFICATION
         };
 
         /**
