@@ -2412,8 +2412,5 @@
 
     <!-- Show WiFi activity indicators on signal bar -->
     <bool name="config_showWifiActivityIndicators">true</bool>
-    
-    <!-- Show device hardware info in About device -->
-    <bool name="config_displayHardwareInfo">false</bool>
 
 </resources>
