@@ -192,4 +192,5 @@ public abstract class PackageManagerInternal {
      *                     which to load the paths, or null if no overlays should be used.
      */
     public abstract void setResourceDirs(int userId, String packageName, String[] resourceDirs);
+
 }

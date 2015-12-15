@@ -88,6 +88,7 @@
 
     <protected-broadcast android:name="Auth_password_wrong" />
 
+
     <protected-broadcast android:name="android.intent.action.OVERLAY_ADDED" />
     <protected-broadcast android:name="android.intent.action.OVERLAY_CHANGED" />
     <protected-broadcast android:name="android.intent.action.OVERLAY_REMOVED" />

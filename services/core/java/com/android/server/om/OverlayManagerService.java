@@ -36,7 +36,6 @@ import android.content.om.IOverlayManager;
 import android.content.om.OverlayInfo;
 import android.content.pm.IPackageManager;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageManagerInternal;
 import android.content.pm.UserInfo;
 import android.net.Uri;
@@ -115,8 +114,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *     the caller runs as, or if the caller holds the
  *     INTERACT_ACROSS_USERS_FULL permission. Write-access is granted if the
  *     caller is granted read-access and additionaly holds the
- *     CHANGE_CONFIGURATION permission. Additionally, read and write access
- *     is granted by the MODIFY_OVERLAYS permission.</li>
+ *     CHANGE_CONFIGURATION permission.</li>
  * </ul>
  *
  * <p>The AIDL interface works with String package names, int user IDs, and
@@ -257,7 +255,7 @@ public final class OverlayManagerService extends SystemService {
         synchronized (mLock) {
             targets = mImpl.onSwitchUser(newUserId);
         }
-        updateSelectedAssets(newUserId, targets);
+        updateAssets(newUserId, targets);
     }
 
     public List<String> getEnabledOverlayPaths(@NonNull final String packageName,
@@ -453,7 +451,7 @@ public final class OverlayManagerService extends SystemService {
 
         @Override
         public boolean setEnabled(@Nullable final String packageName, final boolean enable,
-                int userId, final boolean shouldWait) throws RemoteException {
+                int userId) throws RemoteException {
             enforceChangeConfigurationPermission("setEnabled");
             userId = handleIncomingUser(userId, "setEnabled");
             if (packageName == null) {
@@ -463,7 +461,7 @@ public final class OverlayManagerService extends SystemService {
             final long ident = Binder.clearCallingIdentity();
             try {
                 synchronized (mLock) {
-                    return mImpl.onSetEnabled(packageName, enable, userId, shouldWait);
+                    return mImpl.onSetEnabled(packageName, enable, userId);
                 }
             } finally {
                 Binder.restoreCallingIdentity(ident);
@@ -528,6 +526,14 @@ public final class OverlayManagerService extends SystemService {
         }
 
         @Override
+        public void onShellCommand(@NonNull final FileDescriptor in,
+                @NonNull final FileDescriptor out, @NonNull final FileDescriptor err,
+                @NonNull final String[] args, @NonNull final ResultReceiver resultReceiver) {
+            (new OverlayManagerShellCommand(this)).exec(
+                    this, in, out, err, args, resultReceiver);
+        }
+
+        @Override
         protected void dump(@NonNull final FileDescriptor fd, @NonNull final PrintWriter pw,
                 @NonNull final String[] argv) {
             enforceDumpPermission("dump");
@@ -543,24 +549,19 @@ public final class OverlayManagerService extends SystemService {
         /**
          * Ensure that the caller has permission to interact with the given userId.
          * If the calling user is not the same as the provided user, the caller needs
-         * to hold the INTERACT_ACROSS_USERS_FULL permission or MODIFY_OVERLAYS permission (or be system uid or
+         * to hold the INTERACT_ACROSS_USERS_FULL permission (or be system uid or
          * root).
          *
          * @param userId the user to interact with
          * @param message message for any SecurityException
          */
         private int handleIncomingUser(final int userId, @NonNull final String message) {
-            if (getContext().checkCallingOrSelfPermission(
-                    android.Manifest.permission.MODIFY_OVERLAYS) == PackageManager.PERMISSION_GRANTED) {
-                return userId;
-            } else {
-                return ActivityManager.handleIncomingUser(Binder.getCallingPid(),
-                        Binder.getCallingUid(), userId, false, true, message, null);
-            }
+            return ActivityManager.handleIncomingUser(Binder.getCallingPid(),
+                    Binder.getCallingUid(), userId, false, true, message, null);
         }
 
         /**
-         * Enforce that the caller holds the CHANGE_CONFIGURATION permission or MODIFY_OVERLAYS permission (or is
+         * Enforce that the caller holds the CHANGE_CONFIGURATION permission (or is
          * system or root).
          *
          * @param message used as message if SecurityException is thrown
@@ -569,12 +570,9 @@ public final class OverlayManagerService extends SystemService {
         private void enforceChangeConfigurationPermission(@NonNull final String message) {
             final int callingUid = Binder.getCallingUid();
 
-            if (getContext().checkCallingOrSelfPermission(
-                    android.Manifest.permission.MODIFY_OVERLAYS) != PackageManager.PERMISSION_GRANTED) {
-                if (callingUid != Process.SYSTEM_UID && callingUid != 0) {
-                    getContext().enforceCallingOrSelfPermission(
-                            android.Manifest.permission.CHANGE_CONFIGURATION, message);
-                }
+            if (callingUid != Process.SYSTEM_UID && callingUid != 0) {
+                getContext().enforceCallingOrSelfPermission(
+                        android.Manifest.permission.CHANGE_CONFIGURATION, message);
             }
         }
 
@@ -592,15 +590,6 @@ public final class OverlayManagerService extends SystemService {
                         message);
             }
         }
-
-        public void refresh(int uid) {
-            Collection<String> targets;
-            synchronized (mLock) {
-                targets = mImpl.onSwitchUser(uid);
-            }
-            List targeted = new ArrayList(targets);
-            updateSelectedAssets(uid, targeted);
-        }
     };
 
     private boolean isOverlayPackage(@NonNull final PackageInfo pi) {
@@ -614,48 +603,45 @@ public final class OverlayManagerService extends SystemService {
         }
 
         @Override
-        public void onOverlayAdded(@NonNull final OverlayInfo oi, final boolean shouldWait) {
-            scheduleBroadcast(Intent.ACTION_OVERLAY_ADDED, oi, oi.isEnabled(), shouldWait);
+        public void onOverlayAdded(@NonNull final OverlayInfo oi) {
+            scheduleBroadcast(Intent.ACTION_OVERLAY_ADDED, oi, oi.isEnabled());
         }
 
         @Override
-        public void onOverlayRemoved(@NonNull final OverlayInfo oi, final boolean shouldWait) {
-            scheduleBroadcast(Intent.ACTION_OVERLAY_REMOVED, oi, oi.isEnabled(), shouldWait);
+        public void onOverlayRemoved(@NonNull final OverlayInfo oi) {
+            scheduleBroadcast(Intent.ACTION_OVERLAY_REMOVED, oi, oi.isEnabled());
         }
 
         @Override
-        public void onOverlayChanged(@NonNull final OverlayInfo oi, @NonNull OverlayInfo oldOi,
-                final boolean shouldWait) {
-            scheduleBroadcast(Intent.ACTION_OVERLAY_CHANGED, oi,
-                    oi.isEnabled() != oldOi.isEnabled(), shouldWait);
+        public void onOverlayChanged(@NonNull final OverlayInfo oi,
+                @NonNull final OverlayInfo oldOi) {
+            scheduleBroadcast(Intent.ACTION_OVERLAY_CHANGED, oi, oi.isEnabled() != oldOi.isEnabled());
         }
 
         @Override
         public void onOverlayPriorityChanged(@NonNull final OverlayInfo oi) {
-            scheduleBroadcast(Intent.ACTION_OVERLAY_PRIORITY_CHANGED, oi, oi.isEnabled(), false);
+            scheduleBroadcast(Intent.ACTION_OVERLAY_PRIORITY_CHANGED, oi, oi.isEnabled());
         }
 
         private void scheduleBroadcast(@NonNull final String action, @NonNull final OverlayInfo oi,
-                final boolean doUpdate, final boolean shouldWait) {
-            FgThread.getHandler().post(new BroadcastRunnable(action, oi, doUpdate, shouldWait));
+                final boolean doUpdate) {
+            FgThread.getHandler().post(new BroadcastRunnable(action, oi, doUpdate));
         }
 
         private final class BroadcastRunnable extends Thread {
             private final String mAction;
             private final OverlayInfo mOverlayInfo;
             private final boolean mDoUpdate;
-            private final boolean shouldWait;
 
-            public BroadcastRunnable(@NonNull final String action, @NonNull final OverlayInfo oi, 
-                    final boolean doUpdate, final boolean shouldWait) {
+            public BroadcastRunnable(@NonNull final String action, @NonNull final OverlayInfo oi,
+                    final boolean doUpdate) {
                 mAction = action;
                 mOverlayInfo = oi;
                 mDoUpdate = doUpdate;
-                this.shouldWait = shouldWait;
             }
 
             public void run() {
-                if (mDoUpdate && !shouldWait) {
+                if (mDoUpdate) {
                     updateAssets(mOverlayInfo.userId, mOverlayInfo.targetPackageName);
                 }
                 sendBroadcast(mAction, mOverlayInfo.targetPackageName, mOverlayInfo.packageName,
@@ -686,40 +672,41 @@ public final class OverlayManagerService extends SystemService {
     private void updateAssets(final int userId, final String targetPackageName) {
         final List<String> list = new ArrayList<>();
         list.add(targetPackageName);
-        updateSelectedAssets(userId, list);
+        updateAssets(userId, list);
     }
 
-    private void updateSelectedAssets(final int userId, List<String> targetPackageNames) {
-        final PackageManagerInternal pm = LocalServices.getService(PackageManagerInternal.class);
-        final boolean updateFrameworkRes = targetPackageNames.contains("android");
-        if (updateFrameworkRes) {
-            targetPackageNames = pm.getTargetPackageNames(userId);
-        }
+    private void updateAssets(final int userId, List<String> targetPackageNames) {
+        // TODO: uncomment when we integrate OMS properly
+        // final PackageManagerInternal pm = LocalServices.getService(PackageManagerInternal.class);
+        // final boolean updateFrameworkRes = targetPackageNames.contains("android");
+        // if (updateFrameworkRes) {
+        //     targetPackageNames = pm.getTargetPackageNames(userId);
+        // }
 
-        final Map<String, String[]> allPaths = new ArrayMap<>(targetPackageNames.size());
-        synchronized (mLock) {
-            final List<String> frameworkPaths = mImpl.onGetEnabledOverlayPaths("android", userId);
-            for (final String packageName : targetPackageNames) {
-                final List<String> paths = new ArrayList<>();
-                paths.addAll(frameworkPaths);
-                if (!"android".equals(packageName)) {
-                    paths.addAll(mImpl.onGetEnabledOverlayPaths(packageName, userId));
-                }
-                allPaths.put(packageName,
-                    paths.isEmpty() ? null : paths.toArray(new String[paths.size()]));
-            }
-        }
+        // final Map<String, String[]> allPaths = new ArrayMap<>(targetPackageNames.size());
+        // synchronized (mLock) {
+        //     final List<String> frameworkPaths = mImpl.onGetEnabledOverlayPaths("android", userId);
+        //     for (final String packageName : targetPackageNames) {
+        //         final List<String> paths = new ArrayList<>();
+        //         paths.addAll(frameworkPaths);
+        //         if (!"android".equals(packageName)) {
+        //             paths.addAll(mImpl.onGetEnabledOverlayPaths(packageName, userId));
+        //         }
+        //         allPaths.put(packageName,
+        //             paths.isEmpty() ? null : paths.toArray(new String[paths.size()]));
+        //     }
+        // }
 
-        for (String packageName : targetPackageNames) {
-            pm.setResourceDirs(userId, packageName, allPaths.get(packageName));
-        }
+        // for (String packageName : targetPackageNames) {
+        //     pm.setResourceDirs(userId, packageName, allPaths.get(packageName));
+        // }
 
-        final IActivityManager am = ActivityManagerNative.getDefault();
-        try {
-            am.updateAssets(userId, targetPackageNames);
-        } catch (RemoteException e) {
-            // Intentionally left empty.
-        }
+        // final IActivityManager am = ActivityManagerNative.getDefault();
+        // try {
+        //     am.updateAssets(userId, targetPackageNames);
+        // } catch (RemoteException e) {
+        //     // Intentionally left empty.
+        // }
     }
 
     private void schedulePersistSettings() {
