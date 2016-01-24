@@ -18,6 +18,7 @@ package com.android.systemui.qs.tiles;
 
 import android.app.ActivityManager;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -37,6 +38,7 @@ import com.android.systemui.statusbar.policy.NetworkController.MobileDataControl
 import com.android.systemui.statusbar.policy.NetworkController.MobileDataController.DataUsageInfo;
 import com.android.systemui.statusbar.policy.NetworkController.NetworkSignalChangedCallback;
 import cyanogenmod.app.StatusBarPanelCustomTile;
+import cyanogenmod.providers.CMSettings;
 
 /** Quick settings tile: Cellular **/
 public class CellularTile extends QSTile<QSTile.SignalState> {
@@ -99,11 +101,17 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
     @Override
     protected void handleClick() {
         if (mDataController.isMobileDataSupported()) {
-	    if (!mDataController.isMobileDataEnabled()) {
+	    if (isFastTile() && !mDataController.isMobileDataEnabled()) {
+		// Fast switch & data off. Enable data.
                 mDataController.setMobileDataEnabled(true);
-	    } else {
+	    } else if (isFastTile() && mDataController.isMobileDataEnabled()) {
+		// Fast switch & data on. Disable data.
 		mDataController.setMobileDataEnabled(false);
-	    }
+	    } else {
+		/* Fast switch off, we don't care about data status.
+		 * Show data usage summary.
+		 */
+		showDetail(true);
         } else {
              mHost.startSettingsActivity(DATA_USAGE_SETTINGS);
         }
@@ -163,6 +171,16 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
             return string.substring(0, length - 1);
         }
         return string;
+    }
+
+    // Retrieve fastDataTile switchPreference value
+    private Boolean isFastTile() {
+	ContentResolver resolver = mContext.getContentResolver();
+	if (CMSettings.Secure.getInt(resolver, CMSettings.Secure.QS_FAST_DATA_ENABLE, 0) != 0) {
+	    return true;
+	} else {
+	    return false;
+	}
     }
 
     private static final class CallbackInfo {

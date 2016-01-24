@@ -1269,6 +1269,7 @@ public final class Settings {
             MOVED_TO_SECURE.add(Secure.QS_TILES);
             MOVED_TO_SECURE.add(Secure.QS_USE_MAIN_TILES);
             MOVED_TO_SECURE.add(Secure.QS_SHOW_BRIGHTNESS_SLIDER);
+	    MOVED_TO_SECURE.add(Secure.QS_FAST_DATA_ENABLE);
             for (String s : Secure.NAVIGATION_RING_TARGETS) {
                 MOVED_TO_SECURE.add(s);
             }
@@ -2204,6 +2205,15 @@ public final class Settings {
          */
         @Deprecated
         public static final String QS_SHOW_BRIGHTNESS_SLIDER = Secure.QS_SHOW_BRIGHTNESS_SLIDER;
+
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @deprecated Use {@link android.provider.Settings.Secure#QS_FAST_DATA_ENABLE}
+	 * instead
+	 * @hide
+	 */
+	@Deprecated
+        public static final String QS_FAST_DATA_ENABLE = Secure.QS_FAST_DATA_ENABLE;
 
         /**
          * List of QS tile names
@@ -6049,6 +6059,14 @@ public final class Settings {
          */
         @Deprecated
         public static final String QS_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
+
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @deprecated Use {@link cyanogenmod.providers.CMSettings.Secure#QS_FAST_DATA_ENABLE}
+	 * @hide
+	 */
+	@Deprecated
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
 
         /**
          * List of QS tile names
