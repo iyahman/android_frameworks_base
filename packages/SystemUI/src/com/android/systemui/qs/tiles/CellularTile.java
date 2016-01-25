@@ -112,7 +112,8 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
 		 * Show data usage summary.
 		 */
 		showDetail(true);
-        } else {
+		} 
+	}else {
              mHost.startSettingsActivity(DATA_USAGE_SETTINGS);
         }
     }
