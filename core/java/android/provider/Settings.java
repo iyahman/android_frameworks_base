@@ -3701,6 +3701,12 @@ public final class Settings {
          */
         public static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
 
+	/**
+         * Enable double tap gesture anywhere on the lock screen put device to sleep
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_ANYWHERE = "double_tap_sleep_anywhere";
+
          /**
          * Shows custom date before clock time
          * 0 - No Date
