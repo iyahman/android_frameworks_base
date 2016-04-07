@@ -224,4 +224,6 @@
   <string name="data_sim_not_configured">Brak danych SIM</string>
   <!-- Content description of the dock battery level icon for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
   <string name="accessibility_dock_battery_level">Bateria stacji dokującej <xliff:g id="number">%d</xliff:g> procent.</string>
+  <!-- Play queue -->
+  <string name="play_queue_extention">Pokaż kolejkę odtwarzania</string>
 </resources>
