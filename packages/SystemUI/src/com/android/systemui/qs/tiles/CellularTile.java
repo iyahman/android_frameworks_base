@@ -19,6 +19,7 @@ package com.android.systemui.qs.tiles;
 
 import android.app.ActivityManager;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -40,6 +41,7 @@ import com.android.systemui.statusbar.policy.NetworkController.MobileDataControl
 import com.android.systemui.statusbar.policy.NetworkController.SignalCallback;
 import com.android.systemui.statusbar.policy.SignalCallbackAdapter;
 import cyanogenmod.app.StatusBarPanelCustomTile;
+import cyanogenmod.providers.CMSettings;
 
 /** Quick settings tile: Cellular **/
 public class CellularTile extends QSTile<QSTile.SignalState> {
@@ -102,12 +104,19 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
     protected void handleClick() {
         MetricsLogger.action(mContext, getMetricsCategory());
         if (mDataController.isMobileDataSupported()) {
+	    if (isFastTile() && !mDataController.isMobileDataEnabled()) {
+		mDataController.setMobileDataEnabled(true);
+	    } else if (isFastTile() && mDataController.isMobileDataEnabled()) {
+		mDataController.setMobileDataEnabled(false);
+	    } else {
             showDetail(true);
+	    }
         } else {
             mHost.startActivityDismissingKeyguard(DATA_USAGE_SETTINGS);
         }
     }
 
+    
     @Override
     protected void handleSecondaryClick() {
         handleClick();
@@ -181,6 +190,16 @@ public class CellularTile extends QSTile<QSTile.SignalState> {
             return string.substring(0, length - 1);
         }
         return string;
+    }
+
+    // Retrieve fastDataTile switchPreference value
+    private Boolean isFastTile() {
+	ContentResolver resolver = mContext.getContentResolver();
+	if (CMSettings.Secure.getInt(resolver, CMSettings.Secure.QS_FAST_DATA_ENABLE, 0) != 0) {
+	    return true;
+	} else {
+	    return false;
+	}
     }
 
     private static final class CallbackInfo {

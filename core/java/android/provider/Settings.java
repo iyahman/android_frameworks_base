@@ -1509,6 +1509,9 @@ public final class Settings {
             // At one time in System, then Global, but now back in Secure
             MOVED_TO_SECURE.add(Secure.INSTALL_NON_MARKET_APPS);
 
+	    //opt-cm-13 Changes
+	    MOVED_TO_SECURE.add(Secure.QS_FAST_DATA_ENABLE);
+	    
             MOVED_TO_SECURE.add(System.DEV_FORCE_SHOW_NAVBAR);
             MOVED_TO_SECURE.add(System.KEYBOARD_BRIGHTNESS);
             MOVED_TO_SECURE.add(System.BUTTON_BRIGHTNESS);
@@ -2518,6 +2521,16 @@ public final class Settings {
          * @hide
          */
         public static final String BUTTON_BACKLIGHT_TIMEOUT = "button_backlight_timeout";
+
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @deprecated Use {@link android.provider.Settings.Secure#QS_FAST_DATA_ENABLE}
+	 * instead
+	 * @hide
+	 */
+	@Deprecated
+        public static final String QS_FAST_DATA_ENABLE = Secure.QS_FAST_DATA_ENABLE;
+
 
         /**
          * Control whether the process CPU usage meter should be shown.
@@ -6143,6 +6156,14 @@ public final class Settings {
          */
         public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
 
+	/**
+	 * Fastly enable mobile data without showing data usage summary.
+	 * @deprecated Use {@link cyanogenmod.providers.CMSettings.Secure#QS_FAST_DATA_ENABLE}
+	 * @hide
+	 */
+	@Deprecated
+	public static final String QS_FAST_DATA_ENABLE = "qs_fast_data_enable";
+	
         /**
          * This are the settings to be backed up.
          *
