@@ -115,7 +115,7 @@ PRODUCT_COPY_FILES += \
 #Samsung's Lollipop stock special sounds(Charger plug/unplug , low battery etc)
    
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)material/effects/Charger_Connection.ogg:system/media/audio/ui/Charger_Connection.ogg \
+   $(LOCAL_PATH)material/notifications/Charger_Connection.ogg:system/media/audio/notifications/Charger_Connection.ogg \
    $(LOCAL_PATH)material/effects/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
    
    
