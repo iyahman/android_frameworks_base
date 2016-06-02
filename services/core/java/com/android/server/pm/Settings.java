@@ -1720,7 +1720,7 @@ final class Settings {
 
                     ps.setUserState(userId, ceDataInode, enabled, installed, stopped, notLaunched,
                             hidden, suspended, enabledCaller, enabledComponents, disabledComponents,
-			    blockUninstall, verifState, linkGeneration, null);
+                            blockUninstall, verifState, linkGeneration, null);
                 } else if (tagName.equals("preferred-activities")) {
                     readPreferredActivitiesLPw(parser, userId);
                 } else if (tagName.equals(TAG_PERSISTENT_PREFERRED_ACTIVITIES)) {

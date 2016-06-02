@@ -352,7 +352,7 @@ private:
         static String8 getPathName(const char* path);
 
         bool isUpToDate();
-    private:
+ private:
         void closeZip(int idx);
 
         int getIndex(const String8& zip) const;

@@ -5442,11 +5442,6 @@ public class PackageParser {
             ai.enabled = false;
         }
         ai.enabledSetting = state.enabled;
-
-        if (state.protectedComponents != null) {
-            ai.protect = state.protectedComponents.size() > 0;
-        }
-
         ai.resourceDirs = state.resourceDirs;
     }
 
