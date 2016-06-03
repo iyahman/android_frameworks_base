@@ -194,11 +194,12 @@ public class PhoneStatusBarPolicy implements Callback {
         mAlarmIconObserver.onChange(true);
         mContext.getContentResolver().registerContentObserver(
                 CMSettings.System.getUriFor(CMSettings.System.SHOW_ALARM_ICON),
-                false, mSettingsObserver);
+                false, mAlarmIconObserver);
+	
 	//SU
 	mContext.getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.SHOW_SU_INDICATOR),
-                false, mSettingsObserver);
+                false, mSUObserver);
 
         // zen
         mService.setIcon(SLOT_ZEN, R.drawable.stat_sys_zen_important, 0, null);
@@ -238,8 +239,6 @@ public class PhoneStatusBarPolicy implements Callback {
         public void onChange(boolean selfChange, Uri uri) {
             mAlarmIconVisible = CMSettings.System.getInt(mContext.getContentResolver(),
                     CMSettings.System.SHOW_ALARM_ICON, 1) == 1;
-            mSuIndicatorVisible = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.SHOW_SU_INDICATOR, 1) == 1;
             updateAlarm();
             updateSu();
         }
@@ -249,6 +248,21 @@ public class PhoneStatusBarPolicy implements Callback {
             onChange(selfChange, null);
         }
     };
+    
+    private ContentObserver mSUObserver = new ContentObserver(null) {
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            mSuIndicatorVisible = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.SHOW_SU_INDICATOR, 1) == 1;
+            updateSu();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+    };
+    
 
     public void setZenMode(int zen) {
         mZen = zen;
