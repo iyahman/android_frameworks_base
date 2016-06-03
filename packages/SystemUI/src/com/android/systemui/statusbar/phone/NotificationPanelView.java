@@ -79,7 +79,9 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.policy.LiveLockScreenController;
 import com.android.systemui.statusbar.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.stack.StackStateAnimator;
-
+import android.provider.Settings;
+ import cyanogenmod.externalviews.KeyguardExternalView;
+ 
 import cyanogenmod.providers.CMSettings;
 
 import java.util.List;
@@ -2780,7 +2782,8 @@ public class NotificationPanelView extends PanelView implements
             mDoubleTapToSleepEnabled = CMSettings.System.getInt(
                     resolver, CMSettings.System.DOUBLE_TAP_SLEEP_GESTURE, 1) == 1;
             mDoubleTapToSleepAnywhere = Settings.System.getInt(
-		    resolver, Settings.System.DOUBLE_TAP_SLEEP_ANYWHERE, 0) == 1;
+		mContext.getContentResolver(),
+                    Settings.System.SHOW_SU_INDICATOR, 1) == 1;
 
             boolean liveLockScreenEnabled = CMSettings.Secure.getInt(
                     resolver, CMSettings.Secure.LIVE_LOCK_SCREEN_ENABLED, 0) == 1;
