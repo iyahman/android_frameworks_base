@@ -236,5 +236,5 @@
     <string-array name="def_protected_sms_list_values"></string-array>
 
     <!-- Default for Settings.Global.CAPTIVE_PORTAL_DETECTION_ENABLED -->
-    <integer name="def_captive_portal_detection_enabled" translatable="false">1</integer>
+    <integer name="def_captive_portal_detection_enabled" translatable="false">0</integer>
 </resources>
