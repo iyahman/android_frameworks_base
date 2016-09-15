@@ -291,7 +291,7 @@
     <dimen name="notification_padding_dimmed">0dp</dimen>
 
     <!-- The padding between the individual notification cards. -->
-    <dimen name="notification_padding">0.5dp</dimen>
+    <dimen name="notification_padding">0dp</dimen>
 
     <!-- The minimum amount of top overscroll to go to the quick settings. -->
     <dimen name="min_top_overscroll_to_qs">36dp</dimen>
@@ -311,7 +311,7 @@
     <!-- Falsing threshold used when dismissing notifications from the lockscreen. -->
     <dimen name="swipe_helper_falsing_threshold">70dp</dimen>
 
-    <dimen name="notifications_top_padding">0.5dp</dimen>
+    <dimen name="notifications_top_padding">0dp</dimen>
     
     <!-- Minimum distance the user has to drag down to go to the full shade. -->
     <dimen name="keyguard_drag_down_min_distance">100dp</dimen>
