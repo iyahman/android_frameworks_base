@@ -3512,6 +3512,19 @@ public final class Settings {
         /** @hide */
         public static final Validator LOCKSCREEN_DISABLED_VALIDATOR = sBooleanValidator;
 
+
+	/**
+         * show clear all recents button
+         *  @hide
+         */
+	public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+	
+	/**
+         * location of the clear all rectents button
+         * @hide
+         */
+        public static final String  RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+	
         /**
          * @deprecated Use {@link android.provider.Settings.Global#LOW_BATTERY_SOUND}
          * instead
