@@ -214,8 +214,14 @@ public class RecentsView extends FrameLayout {
         // Update the top level view's visibilities
         if (stack.getTaskCount() > 0) {
             hideEmptyView();
+			if (mFloatingButton != null) {
+			mFloatingButton.setVisibility(View.VISIBLE);
+			}
         } else {
             showEmptyView(R.string.recents_empty_message);
+			if (mFloatingButton != null) {
+			mFloatingButton.setVisibility(View.GONE);
+			}
         }
     }
 
@@ -297,12 +303,6 @@ public class RecentsView extends FrameLayout {
      */
     public void showEmptyView(int msgResId) {
         mTaskStackView.setVisibility(View.INVISIBLE);
-		if (mFloatingButton != null) {
-		mFloatingButton.setVisibility(View.GONE);
-		}
-	    if (mClearRecents != null) {
-		mClearRecents.setVisibility(View.GONE);
-		}
         mEmptyView.setText(msgResId);
         mEmptyView.setVisibility(View.VISIBLE);
         mEmptyView.bringToFront();
