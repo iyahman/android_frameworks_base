@@ -20,6 +20,10 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.NetworkCapabilities;
 import android.os.Looper;
+import android.os.SystemProperties;
+import android.provider.Settings;
+import android.telephony.CellLocation;
+import android.telephony.gsm.GsmCellLocation;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
@@ -200,25 +204,27 @@ public class MobileSignalController extends SignalController<
         }
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPAP, hGroup);
 
-        if (mConfig.show4gForLte) {
-            mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.FOUR_G);
-            if (mConfig.hideLtePlus) {
-                mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
-                        TelephonyIcons.FOUR_G);
-            } else {
-                mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
-                        TelephonyIcons.FOUR_G_PLUS);
-            }
-        } else {
-            mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.LTE);
-            if (mConfig.hideLtePlus) {
-                mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
-                        TelephonyIcons.LTE);
-            } else {
-                mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
-                        TelephonyIcons.LTE_PLUS);
-            }
-        }
+
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                 Settings.System.SHOW_FOURG, 0) == 1) {
+		mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.FOUR_G);
+		if (mConfig.hideLtePlus) {
+			mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
+				TelephonyIcons.FOUR_G);
+		} else {
+			mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
+				TelephonyIcons.FOUR_G_PLUS);
+		}
+	} else {
+		mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.LTE);
+		if (mConfig.hideLtePlus) {
+			mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
+			TelephonyIcons.LTE);
+		} else {
+			mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
+			TelephonyIcons.LTE_PLUS);
+		}
+	}
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_IWLAN, TelephonyIcons.WFC);
     }
 

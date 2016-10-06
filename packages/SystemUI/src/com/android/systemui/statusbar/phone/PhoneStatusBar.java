@@ -419,6 +419,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     // settings
     private QSPanel mQSPanel;
 
+    private boolean mShow4G;
+
     // top bar
     BaseStatusBarHeader mHeader;
     protected KeyguardStatusBarView mKeyguardStatusBar;
@@ -506,12 +508,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
 
         void observe() {
-            ContentResolver resolver = mContext.getContentResolver();
+           ContentResolver resolver = mContext.getContentResolver();
            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_TICKER),
                     false, this, UserHandle.USER_ALL);
 	
-            update();
+           resolver.registerContentObserver(Settings.System.getUriFor(
+                   Settings.System.SHOW_FOURG), false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -526,13 +529,28 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                         ? 1 : 1, UserHandle.USER_CURRENT) == 1;
 			initTickerView();
 		}
-		update();
+
+		
+		if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SHOW_FOURG))) {
+                    mShow4G = Settings.System.getIntForUser(
+                            mContext.getContentResolver(),
+                            Settings.System.SHOW_FOURG,
+                            0, UserHandle.USER_CURRENT) == 1;
+                mNetworkController.onConfigurationChanged();
+            }
+
+            update();
+		
+	}
+	
+
+	public void update() {
+		ContentResolver resolver = mContext.getContentResolver();
+		boolean mShow4G = Settings.System.getIntForUser(resolver,
+                    Settings.System.SHOW_FOURG, 0, UserHandle.USER_CURRENT) == 1;
 	}
 
-        public void update() {
-            ContentResolver resolver = mContext.getContentResolver();
-  
-        }
     }
 
     class DevForceNavbarObserver extends ContentObserver {

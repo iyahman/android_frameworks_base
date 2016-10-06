@@ -123,9 +123,6 @@
     <integer name="quick_settings_brightness_dialog_short_timeout">1000</integer>
     <integer name="quick_settings_brightness_dialog_long_timeout">3000</integer>
 
-    <!-- Should "4G" be shown instead of "LTE" when the network is NETWORK_TYPE_LTE? -->
-    <bool name="config_show4GForLTE">true</bool>
-
    <!-- Most Devices support LTE. Hence LTE tile is visibile. Devices like Galaxy s2, s3 require this to be false -->
     <bool name="device_supports_lte">true</bool>
 
