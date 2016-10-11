@@ -1684,12 +1684,19 @@ public class TelephonyManager {
         }
     }
 
+
+
     /**
-     * Network Class Definitions.
-     * Do not change this order, it is used for sorting during emergency calling in
-     * {@link TelephonyConnectionService#getFirstPhoneForEmergencyCall()}. Any newer technologies
-     * should be added after the current definitions.
+     * {@hide}
      */
+    public void toggleLTE(boolean on) {
+        try {
+            getITelephony().toggleLTE(on);
+        } catch (RemoteException e) {
+            //Silently fail
+        }
+    }
+
     /** Unknown network class. {@hide} */
     public static final int NETWORK_CLASS_UNKNOWN = 0;
     /** Class of broadly defined "2G" networks. {@hide} */
