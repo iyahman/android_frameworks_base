@@ -1684,8 +1684,6 @@ public class TelephonyManager {
         }
     }
 
-
-
     /**
      * {@hide}
      */
