@@ -16,6 +16,7 @@
 -->
 <resources>
 
+
     <!-- Custom system animations -->
     <java-symbol type="string" name="action_null"/>
     <java-symbol type="string" name="animation_fade"/>
@@ -59,4 +60,8 @@
     <java-symbol type="anim" name="slide_out_left_no_fade" />
     <java-symbol type="anim" name="slide_in_left_no_fade" />
     <java-symbol type="anim" name="slide_out_right_no_fade" />
+
+    <!-- Quick settings tiles columns and rows config -->
+    <java-symbol type="integer" name="config_qs_num_rows_landscape_default"/>
+
 </resources>
