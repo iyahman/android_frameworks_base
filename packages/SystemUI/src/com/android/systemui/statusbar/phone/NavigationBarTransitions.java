@@ -38,7 +38,7 @@ public final class NavigationBarTransitions extends BarTransitions {
         super(view, R.drawable.nav_background, R.color.navigation_bar_background_opaque,
                 R.color.navigation_bar_background_semi_transparent,
                 R.color.navigation_bar_background_transparent,
-                com.android.internal.R.color.battery_saver_mode_color);
+                com.android.internal.R.color.battery_saver_status_bar);
         mView = view;
         mBarService = IStatusBarService.Stub.asInterface(
                 ServiceManager.getService(Context.STATUS_BAR_SERVICE));
