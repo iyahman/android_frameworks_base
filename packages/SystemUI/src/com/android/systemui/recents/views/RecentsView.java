@@ -79,6 +79,11 @@ import com.android.systemui.recents.views.RecentsTransitionHelper.AnimationSpecC
 import com.android.systemui.stackdivider.WindowManagerProxy;
 import com.android.systemui.statusbar.FlingAnimationUtils;
 
+import android.provider.Settings;
+import android.os.Bundle;
+import android.os.UserHandle;
+import android.os.Handler;
+
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -335,10 +340,9 @@ public class RecentsView extends FrameLayout {
 			mClearRecents.setOnClickListener(new View.OnClickListener() {
           	public void onClick(View v) {
                 	EventBus.getDefault().send(new DismissAllTaskViewsEvent());
-                	updateMemoryStatus();
             		}
         	});
-        updateTimeVisibility();
+
     }
 
     @Override
@@ -389,13 +393,6 @@ public class RecentsView extends FrameLayout {
                     mFloatingButton.getLayoutParams();
         boolean isLandscape = mContext.getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE;
-           if (mMemBar == null || isLandscape) {
-                params.topMargin = mContext.getResources().
-                    getDimensionPixelSize(com.android.internal.R.dimen.status_bar_height);
-            } else {
-                params.topMargin = 2*(mContext.getResources().
-                    getDimensionPixelSize(com.android.internal.R.dimen.status_bar_height));
-            }
 
             switch (clearRecentsLocation) {
                 case 0:
