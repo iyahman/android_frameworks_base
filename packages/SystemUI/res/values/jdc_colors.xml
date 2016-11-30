@@ -18,7 +18,7 @@
 <resources>
 
     <!--Recents fab color-->
-    <color name="fab_color">#ff009688</color>
+    <color name="fab_color">#4b708e</color>
     <color name="floating_action_button_icon_color">#ffffff</color>
     
 </resources>
