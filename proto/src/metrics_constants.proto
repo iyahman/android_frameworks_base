@@ -2213,5 +2213,8 @@ message MetricsEvent {
 
     // JDCTeam Settings
     JDC_SETTINGS = 420;
+    
+    // LTE Metric
+    QUICK_SETTINGS = 421;
   }
 }
