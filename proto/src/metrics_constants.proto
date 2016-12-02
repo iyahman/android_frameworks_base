@@ -2222,6 +2222,7 @@ message MetricsEvent {
     // LTE Metric
     QUICK_SETTINGS = 421;
     
-
+    //Sound QS Tile
+    SOUND_TILE = 444;
   }
 }
