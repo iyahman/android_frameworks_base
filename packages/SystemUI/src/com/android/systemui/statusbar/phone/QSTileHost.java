@@ -76,6 +76,10 @@ import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
 
+//Used for LTE tile
+import android.telephony.TelephonyManager;
+import com.android.internal.telephony.PhoneConstants;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -199,6 +203,21 @@ public class QSTileHost implements QSTile.Host, Tunable {
     public void startActivityDismissingKeyguard(PendingIntent intent) {
         mStatusBar.postStartActivityDismissingKeyguard(intent);
     }
+    
+    public static boolean deviceSupportsLte(Context ctx) {
+        final TelephonyManager tm = (TelephonyManager)
+                ctx.getSystemService(Context.TELEPHONY_SERVICE);
+        return (tm.getLteOnCdmaMode() == PhoneConstants.LTE_ON_CDMA_TRUE)
+                || tm.getLteOnGsmMode() != 0;
+    }
+
+    public static boolean deviceSupportsDdsSupported(Context context) {
+        TelephonyManager tm = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.isMultiSimEnabled()
+                && tm.getMultiSimConfiguration() == TelephonyManager.MultiSimVariants.DSDA;
+    }
+
 
     @Override
     public void startRunnableDismissingKeyguard(Runnable runnable) {
