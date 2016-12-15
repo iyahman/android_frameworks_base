@@ -1685,7 +1685,6 @@ public class TelephonyManager {
     }
 
 
-
     /**
      * {@hide}
      */
@@ -1696,7 +1695,6 @@ public class TelephonyManager {
             //Silently fail
         }
     }
-
 
     /**
      * Network Class Definitions.
