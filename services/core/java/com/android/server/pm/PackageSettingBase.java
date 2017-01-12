@@ -395,8 +395,6 @@ abstract class PackageSettingBase extends SettingBase {
         state.blockUninstall = blockUninstall;
         state.domainVerificationStatus = domainVerifState;
         state.appLinkGeneration = linkGeneration;
-        state.protectedComponents = protectedComponents;
-        state.visibleComponents = visibleComponents;
 
         state.resourceDirs = resourceDirs;
     }
