@@ -180,8 +180,6 @@ public class TileQueryHelper {
                 }
                 icon.mutate();
                 icon.setTint(mContext.getColor(R.color.external_qs_tile_tint_color));
-                icon.setTintMode(Mode.SRC_ATOP);
-                CharSequence label = info.serviceInfo.loadLabel(pm);
                 addTile(spec, icon, label != null ? label.toString() : "null", appLabel, mContext);
             }
             return tiles;
