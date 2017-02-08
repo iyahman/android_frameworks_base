@@ -136,11 +136,6 @@ public class RecentsView extends FrameLayout {
     private RecentsViewTouchHandler mTouchHandler;
     private final FlingAnimationUtils mFlingAnimationUtils;
 
-
-    View mFloatingButton;
-    View mClearRecents;
-    private int clearRecentsLocation;
-
     TextView mMemText;
     ProgressBar mMemBar;
 
@@ -148,7 +143,7 @@ public class RecentsView extends FrameLayout {
     private int mTotalMem;
 
     View mFloatingButton;
-    ImageButton mClearRecents;
+    View mClearRecents;
     private int clearRecentsLocation;
 
     public RecentsView(Context context) {
