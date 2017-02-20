@@ -1940,21 +1940,6 @@ AssetManager::ZipSet::~ZipSet(void)
         closeZip(i);
 }
 
-/*
- * Close a Zip file from path and reset the entry
- */
-void AssetManager::ZipSet::closeZipFromPath(const String8& zip)
-{
-    //close zip fd
-    int fd = getZip(zip)->getFileDescriptor();
-
-    if (fd > 0) {
-        close(fd);
-        //reset zip object and entry
-        int idx = getIndex(zip);
-        mZipFile.editItemAt(idx) = NULL;
-    }
-}
 
 /*
  * Close a Zip file and reset the entry.
