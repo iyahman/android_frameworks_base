@@ -4590,7 +4590,6 @@ public class PackageManagerService extends IPackageManager.Stub {
                         || actionName.startsWith("com.android.internal.telephony.data-reconnect")
                         || actionName.startsWith("eu.chainfire.supersu.NativeAccess")
                         || actionName.startsWith("android.net.netmon.launchCaptivePortalApp")
-                        || actionName.startsWith("masquerade.substratum.STATUS_CHANGED")) {
                     return true;
                 }
             }
