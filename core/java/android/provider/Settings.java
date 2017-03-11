@@ -3525,6 +3525,13 @@ public final class Settings {
         public static final Validator LOCKSCREEN_DISABLED_VALIDATOR = sBooleanValidator;
 
 
+
+	/**
+         * show clear all recents button
+         *  @hide
+         */
+	public static final String BACKKILL_TIMEOUT_MILLI = "backkill_timeout_milli";
+	 
 	/**
          * show clear all recents button
          *  @hide
