@@ -180,7 +180,7 @@ public class CPUInfoService extends Service {
             }
 
             final int W = mNeededWidth;
-            final int RIGHT = getWidth()-1;
+            final int RIGHT = 5;
 
             int x = 5;
             int top = 5;
@@ -197,14 +197,14 @@ public class CPUInfoService extends Service {
                 String freq=mCurrFreq[i];
                 if(!freq.equals("0")){
                     if(i==0 && mLpMode){
-                        canvas.drawText(s, RIGHT-mPaddingRight-mMaxWidth,
+                        canvas.drawText(s, RIGHT,
                             y-1, mLpPaint);
                     } else {
-                        canvas.drawText(s, RIGHT-mPaddingRight-mMaxWidth,
+                        canvas.drawText(s, RIGHT,
                             y-1, mOnlinePaint);
                     }
                 } else {
-                    canvas.drawText(s, RIGHT-mPaddingRight-mMaxWidth,
+                    canvas.drawText(s, RIGHT,
                         y-1, mOfflinePaint);
                 }
                 y += mFH;
