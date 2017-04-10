@@ -183,7 +183,7 @@ public class CPUInfoService extends Service {
             final int RIGHT = 5;
 
             int x = 5;
-            int top = 5;
+            int top = mPaddingTop;
             int bottom = mPaddingTop + mFH - 2;
 
             int y = mPaddingTop - (int)mAscent;
