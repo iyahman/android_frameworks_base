@@ -1538,7 +1538,7 @@ public final class BatteryStatsService extends IBatteryStats.Stub
                         mStats.updateMobileRadioStateLocked(SystemClock.elapsedRealtime(),
                                 modemInfo);
                     } else {
-                        Slog.e(TAG, "modem info is invalid: " + modemInfo);
+                       // Slog.e(TAG, "modem info is invalid: " + modemInfo);
                     }
                 }
             }
