@@ -182,8 +182,8 @@ public class CPUInfoService extends Service {
             final int W = mNeededWidth;
             final int RIGHT = getWidth()-1;
 
-            int x = RIGHT - mPaddingRight;
-            int top = mPaddingTop + 2;
+            int x = 5;
+            int top = 5;
             int bottom = mPaddingTop + mFH - 2;
 
             int y = mPaddingTop - (int)mAscent;
@@ -262,7 +262,7 @@ public class CPUInfoService extends Service {
         public void run() {
             try {
                 while (!mInterrupt) {
-                    sleep(250);
+                    sleep(100);
                     StringBuffer sb=new StringBuffer();
                     String cpuTemp = CPUInfoService.readOneLine(CPU_TEMP_HTC);
                     if (cpuTemp == null){
