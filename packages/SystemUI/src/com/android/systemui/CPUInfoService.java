@@ -262,7 +262,7 @@ public class CPUInfoService extends Service {
         public void run() {
             try {
                 while (!mInterrupt) {
-                    sleep(500);
+                    sleep(250);
                     StringBuffer sb=new StringBuffer();
                     String cpuTemp = CPUInfoService.readOneLine(CPU_TEMP_HTC);
                     if (cpuTemp == null){
@@ -311,7 +311,7 @@ public class CPUInfoService extends Service {
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.RIGHT | Gravity.TOP;
+        params.gravity = Gravity.LEFT | Gravity.TOP;
         params.setTitle("CPU Info");
 
         mCurCPUThread = new CurCPUThread(mView.getHandler(), mNumCpus);
