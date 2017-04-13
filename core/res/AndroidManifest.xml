@@ -1642,6 +1642,13 @@
         android:label="@string/permlab_getTasks"
         android:description="@string/permdesc_getTasks"
         android:protectionLevel="normal" />
+	
+	  <!-- @hide Allows an application to change the package signature as
+         seen by applications -->
+    <permission android:name="android.permission.FAKE_PACKAGE_SIGNATURE"
+        android:protectionLevel="dangerous"
+        android:label="@string/permlab_fakePackageSignature"
+        android:description="@string/permdesc_fakePackageSignature" />
 
     <!-- New version of GET_TASKS that apps can request, since GET_TASKS doesn't really
          give access to task information.  We need this new one because there are
