@@ -71,6 +71,12 @@ public class ViewConfiguration {
     private static final int DEFAULT_MULTI_PRESS_TIMEOUT = 300;
 
     /**
+     * Defines the default duration in milliseconds between the first tap's up event and the second
+     * tap's down event for an interaction to be considered part of the same multi-press.
+     */
+    private static final int DEFAULT_MULTI_PRESS_TIMEOUT = 300;
+
+    /**
      * Defines the time between successive key repeats in milliseconds.
      */
     private static final int KEY_REPEAT_DELAY = 50;

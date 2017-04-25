@@ -171,7 +171,7 @@ public class RecentsView extends FrameLayout {
                 ? GRID_LAYOUT_SCRIM_ALPHA : DEFAULT_SCRIM_ALPHA;
         mBackgroundScrim = new ColorDrawable(
                 Color.argb((int) (mScrimAlpha * 255), 0, 0, 0)).mutate();
-
+	    
         boolean showClearAllRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.SHOW_CLEAR_ALL_RECENTS, 0, UserHandle.USER_CURRENT) != 0;
 
