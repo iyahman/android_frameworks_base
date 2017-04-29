@@ -241,10 +241,10 @@ public class PasswordTextView extends View {
         }
         userActivity();
         sendAccessibilityEventTypeViewTextChanged(textbefore, textbefore.length(), 0, 1);
-    }
 
-     if (mQuickUnlockListener != null) {
+         if (mQuickUnlockListener != null) {
             mQuickUnlockListener.onValidateQuickUnlock(mText);
+         }
      }
      
     public void setUserActivityListener(UserActivityListener userActivitiListener) {
