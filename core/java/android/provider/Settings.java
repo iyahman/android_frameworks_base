@@ -2704,6 +2704,13 @@ public final class Settings {
         private static final Validator BLUETOOTH_DISCOVERABILITY_TIMEOUT_VALIDATOR =
                 sNonNegativeIntegerValidator;
 
+	/**
+         * Whether to use the custom quick unlock screen control
+         * @hide
+         */
+        public static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL =
+                "lockscreen_quick_unlock_control";
+
         /**
          * @deprecated Use {@link android.provider.Settings.Secure#LOCK_PATTERN_ENABLED}
          * instead
