@@ -139,14 +139,6 @@
          [CHAR LIMIT=4] -->
     <string name="status_bar_notification_info_overflow" translatable="false">\u221E</string>
 
-    
-    <string name="quick_settings_screen_timeout_detail_title">Screen timeout</string>
-    <!-- Content description of the screen timeout tile in quick settings (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_screen_timeout">Screen timeout: <xliff:g id="timeout" example="30 seconds">%s</xliff:g>.</string>
-
-    <!-- Announcement made when the screen timeout tile changes (not shown on the screen). [CHAR LIMIT=NONE] -->
-    <string name="accessibility_quick_settings_screen_timeout_changed">Screen timeout changed to <xliff:g id="timeout" example="30 seconds">%s</xliff:g>.</string>
-
     <!-- Content description of the location tile in quick settings when on, battery saving mode (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_location_battery_saving">Location reporting: battery saving mode.</string>
     <!-- Content description of the location tile in quick settings when on, sensors only mode (not shown on the screen). [CHAR LIMIT=NONE] -->
@@ -180,5 +172,6 @@
     <string name="quick_settings_location_detail_mode_battery_saving_description">Use Wi\u2011Fi, Bluetooth, or cellular networks to determine location</string>
     <!-- [CHAR LIMIT=130] Location detail panel, description for sensors only mode -->
     <string name="quick_settings_location_detail_mode_sensors_only_description">Use GPS to determine your location</string>
+
 
 </resources>
