@@ -230,30 +230,39 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/notifications/material/ogg/Titan.ogg:system/media/audio/notifications/Titan.ogg
 
         
-#Samsung's Lollipop stock notification sounds
+#Samsung's S8 stock notification sounds
 
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/stock_lollipop/notifications/Beep_once.ogg:system/media/audio/notifications/Beep_once.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/Black_watch.ogg:system/media/audio/notifications/Black_watch.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/Hang_drum.ogg:system/media/audio/notifications/Hang_drum.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/Harp_glissando.ogg:system/media/audio/notifications/Harp_glissando.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Bubbles.ogg:system/media/audio/notifications/S_Bubbles.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Charming_bell.ogg:system/media/audio/notifications/S_Charming_bell.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Chirps.ogg:system/media/audio/notifications/S_Chirps.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Buzz.ogg:system/media/audio/notifications/Buzz.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Charm.ogg:system/media/audio/notifications/Charm.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Clue.ogg:system/media/audio/notifications/Clue.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Conga.ogg:system/media/audio/notifications/Conga.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Contact.ogg:system/media/audio/notifications/Contact.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Ding_Dong.ogg:system/media/audio/notifications/Ding_Dong.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Harpsichord.ogg:system/media/audio/notifications/Harpsichord.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Hello.ogg:system/media/audio/notifications/Hello.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Letter.ogg:system/media/audio/notifications/Letter.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Lucky.ogg:system/media/audio/notifications/Lucky.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Moonlight.ogg:system/media/audio/notifications/Moonlight.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/One_Drop.ogg:system/media/audio/notifications/One_Drop.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Organ.ogg:system/media/audio/notifications/Organ.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Piano.ogg:system/media/audio/notifications/Piano.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Pizzicato.ogg:system/media/audio/notifications/Pizzicato.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Play.ogg:system/media/audio/notifications/Play.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Ready.ogg:system/media/audio/notifications/Ready.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Rise.ogg:system/media/audio/notifications/Rise.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/S_Charming_Bell.ogg:system/media/audio/notifications/S_Charming_Bell.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/S_Dew_drops.ogg:system/media/audio/notifications/S_Dew_drops.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Flowers.ogg:system/media/audio/notifications/S_Flowers.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/S_Good_News.ogg:system/media/audio/notifications/S_Good_News.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Harmonics.ogg:system/media/audio/notifications/S_Harmonics.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/S_Knock.ogg:system/media/audio/notifications/S_Knock.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_On_time.ogg:system/media/audio/notifications/S_On_time.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Skyline.ogg:system/media/audio/notifications/Skyline.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Smile.ogg:system/media/audio/notifications/Smile.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/S_On_Time.ogg:system/media/audio/notifications/S_On_Time.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/S_Opener.ogg:system/media/audio/notifications/S_Opener.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Postman.ogg:system/media/audio/notifications/S_Postman.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Pure_Bell.ogg:system/media/audio/notifications/S_Pure_Bell.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Temple_bell.ogg:system/media/audio/notifications/S_Temple_bell.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Tickety_tock.ogg:system/media/audio/notifications/S_Tickety_tock.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/Sweet_favour.ogg:system/media/audio/notifications/Sweet_favour.ogg \
-   $(LOCAL_PATH)/stock_lollipop/notifications/S_Whistle.ogg:system/media/audio/notifications/S_Whistle.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Twinkle.ogg:system/media/audio/notifications/Twinkle.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/Whisper.ogg:system/media/audio/notifications/Whisper.ogg \
+   $(LOCAL_PATH)/stock_lollipop/notifications/Zip.ogg:system/media/audio/notifications/Zip.ogg \
    
 #Samsung's Lollipop stock alarm sounds
 
@@ -268,3 +277,40 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/stock_lollipop/alarms/Springtime_memories.ogg:system/media/audio/alarms/Springtime_memories.ogg \
    $(LOCAL_PATH)/stock_lollipop/alarms/Ticktac.ogg:system/media/audio/alarms/Ticktac.ogg \
    $(LOCAL_PATH)/stock_lollipop/alarms/Walk_in_the_forest.ogg:system/media/audio/alarms/Walk_in_the_forest.ogg \
+   
+# Samsung's S8 ringtones sounds
+
+PRODUCT_COPY_FILES += \
+   $(LOCAL_PATH)/ringtones/ogg/Aqua.ogg:system/media/audio/ringtones/Aqua.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Basic_Bell.ogg:system/media/audio/ringtones/Basic_Bell.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Beep-Beep.ogg:system/media/audio/ringtones/Beep-Beep.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Beep_Once.ogg:system/media/audio/ringtones/Beep_Once.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Bellboy.ogg:system/media/audio/ringtones/Bellboy.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Blues.ogg:system/media/audio/ringtones/Blues.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Chamber.ogg:system/media/audio/ringtones/Chamber.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/City_Lights.ogg:system/media/audio/ringtones/City_Lights.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Coffee.ogg:system/media/audio/ringtones/Coffee.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Constellation.ogg:system/media/audio/ringtones/Constellation.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Donkey.ogg:system/media/audio/ringtones/Donkey.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Friday.ogg:system/media/audio/ringtones/Friday.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Holiday.ogg:system/media/audio/ringtones/Holiday.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Ice_Cream.ogg:system/media/audio/ringtones/Ice_Cream.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Lullaby.ogg:system/media/audio/ringtones/Lullaby.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Mood.ogg:system/media/audio/ringtones/Mood.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Morning_Glory.ogg:system/media/audio/ringtones/Morning_Glory.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/One_Step_Forward.ogg:system/media/audio/ringtones/One_Step_Forward.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Orange.ogg:system/media/audio/ringtones/Orange.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Over_the_Horizon.ogg:system/media/audio/ringtones/Over_the_Horizon.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Pianist.ogg:system/media/audio/ringtones/Pianist.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Rose.ogg:system/media/audio/ringtones/Rose.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Rush.ogg:system/media/audio/ringtones/Rush.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Shimmer.ogg:system/media/audio/ringtones/Shimmer.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Skyscraper.ogg:system/media/audio/ringtones/Skyscraper.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Sparkle.ogg:system/media/audio/ringtones/Sparkle.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Stairway.ogg:system/media/audio/ringtones/Stairway.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Time_Up.ogg:system/media/audio/ringtones/Time_Up.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Sunset.ogg:system/media/audio/ringtones/Sunset.ogg \
+   $(LOCAL_PATH)/ringtones/ogg/Wood.ogg:system/media/audio/ringtones/Wood.ogg \
+   
+   
+	  
