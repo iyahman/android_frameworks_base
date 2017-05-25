@@ -97,7 +97,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/notifications/regulus.ogg:system/media/audio/notifications/regulus.ogg \
     $(LOCAL_PATH)/notifications/sirius.ogg:system/media/audio/notifications/sirius.ogg \
     $(LOCAL_PATH)/notifications/tweeters.ogg:system/media/audio/notifications/tweeters.ogg \
-    $(LOCAL_PATH)/ringtones/ogg/Andromeda.ogg:system/media/audio/ringtones/Andromeda.ogg \
     $(LOCAL_PATH)/ringtones/ogg/Aquila.ogg:system/media/audio/ringtones/Aquila.ogg \
     $(LOCAL_PATH)/ringtones/ogg/ArgoNavis.ogg:system/media/audio/ringtones/ArgoNavis.ogg \
     $(LOCAL_PATH)/ringtones/BOOTES.ogg:system/media/audio/ringtones/BOOTES.ogg \
@@ -120,36 +119,23 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/newwavelabs/CrayonRock.ogg:system/media/audio/ringtones/CrayonRock.ogg \
     $(LOCAL_PATH)/newwavelabs/CrazyDream.ogg:system/media/audio/ringtones/CrazyDream.ogg \
     $(LOCAL_PATH)/newwavelabs/CurveBall.ogg:system/media/audio/ringtones/CurveBall.ogg \
-    $(LOCAL_PATH)/ringtones/ogg/Cygnus.ogg:system/media/audio/ringtones/Cygnus.ogg \
-    $(LOCAL_PATH)/newwavelabs/DancinFool.ogg:system/media/audio/ringtones/DancinFool.ogg \
-    $(LOCAL_PATH)/newwavelabs/DonMessWivIt.ogg:system/media/audio/ringtones/DonMessWivIt.ogg \
-    $(LOCAL_PATH)/ringtones/ogg/Draco.ogg:system/media/audio/ringtones/Draco.ogg \
     $(LOCAL_PATH)/newwavelabs/DreamTheme.ogg:system/media/audio/ringtones/DreamTheme.ogg \
     $(LOCAL_PATH)/newwavelabs/Eastern_Sky.ogg:system/media/audio/ringtones/Eastern_Sky.ogg \
     $(LOCAL_PATH)/newwavelabs/Enter_the_Nexus.ogg:system/media/audio/ringtones/Enter_the_Nexus.ogg \
-    $(LOCAL_PATH)/ringtones/Eridani.ogg:system/media/audio/ringtones/Eridani.ogg \
     $(LOCAL_PATH)/newwavelabs/EtherShake.ogg:system/media/audio/ringtones/EtherShake.ogg \
     $(LOCAL_PATH)/ringtones/FreeFlight.ogg:system/media/audio/ringtones/FreeFlight.ogg \
     $(LOCAL_PATH)/newwavelabs/FriendlyGhost.ogg:system/media/audio/ringtones/FriendlyGhost.ogg \
     $(LOCAL_PATH)/newwavelabs/Funk_Yall.ogg:system/media/audio/ringtones/Funk_Yall.ogg \
     $(LOCAL_PATH)/newwavelabs/GameOverGuitar.ogg:system/media/audio/ringtones/GameOverGuitar.ogg \
     $(LOCAL_PATH)/newwavelabs/Gimme_Mo_Town.ogg:system/media/audio/ringtones/Gimme_Mo_Town.ogg \
-    $(LOCAL_PATH)/ringtones/ogg/Girtab.ogg:system/media/audio/ringtones/Girtab.ogg \
     $(LOCAL_PATH)/newwavelabs/Glacial_Groove.ogg:system/media/audio/ringtones/Glacial_Groove.ogg \
-    $(LOCAL_PATH)/newwavelabs/Growl.ogg:system/media/audio/ringtones/Growl.ogg \
     $(LOCAL_PATH)/newwavelabs/HalfwayHome.ogg:system/media/audio/ringtones/HalfwayHome.ogg \
-    $(LOCAL_PATH)/ringtones/ogg/Hydra.ogg:system/media/audio/ringtones/Hydra.ogg \
-    $(LOCAL_PATH)/newwavelabs/InsertCoin.ogg:system/media/audio/ringtones/InsertCoin.ogg \
     $(LOCAL_PATH)/ringtones/ogg/Kuma.ogg:system/media/audio/ringtones/Kuma.ogg \
     $(LOCAL_PATH)/newwavelabs/LoopyLounge.ogg:system/media/audio/ringtones/LoopyLounge.ogg \
     $(LOCAL_PATH)/newwavelabs/LoveFlute.ogg:system/media/audio/ringtones/LoveFlute.ogg \
-    $(LOCAL_PATH)/ringtones/Lyra.ogg:system/media/audio/ringtones/Lyra.ogg \
-    $(LOCAL_PATH)/ringtones/ogg/Machina.ogg:system/media/audio/ringtones/Machina.ogg \
     $(LOCAL_PATH)/newwavelabs/MidEvilJaunt.ogg:system/media/audio/ringtones/MidEvilJaunt.ogg \
     $(LOCAL_PATH)/newwavelabs/Nairobi.ogg:system/media/audio/ringtones/Nairobi.ogg \
     $(LOCAL_PATH)/newwavelabs/Nassau.ogg:system/media/audio/ringtones/Nassau.ogg \
-    $(LOCAL_PATH)/newwavelabs/NewPlayer.ogg:system/media/audio/ringtones/NewPlayer.ogg \
-    $(LOCAL_PATH)/newwavelabs/No_Limits.ogg:system/media/audio/ringtones/No_Limits.ogg \
     $(LOCAL_PATH)/newwavelabs/Noises2.ogg:system/media/audio/ringtones/Noises2.ogg \
     $(LOCAL_PATH)/newwavelabs/Noises3.ogg:system/media/audio/ringtones/Noises3.ogg \
     $(LOCAL_PATH)/newwavelabs/OrganDub.ogg:system/media/audio/ringtones/OrganDub.ogg \
@@ -179,10 +165,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/newwavelabs/SpringyJalopy.ogg:system/media/audio/ringtones/SpringyJalopy.ogg \
     $(LOCAL_PATH)/newwavelabs/Steppin_Out.ogg:system/media/audio/ringtones/Steppin_Out.ogg \
     $(LOCAL_PATH)/newwavelabs/Terminated.ogg:system/media/audio/ringtones/Terminated.ogg \
-    $(LOCAL_PATH)/ringtones/Testudo.ogg:system/media/audio/ringtones/Testudo.ogg \
     $(LOCAL_PATH)/ringtones/ogg/Themos.ogg:system/media/audio/ringtones/Themos.ogg \
     $(LOCAL_PATH)/newwavelabs/Third_Eye.ogg:system/media/audio/ringtones/Third_Eye.ogg \
-    $(LOCAL_PATH)/newwavelabs/Thunderfoot.ogg:system/media/audio/ringtones/Thunderfoot.ogg \
     $(LOCAL_PATH)/newwavelabs/TwirlAway.ogg:system/media/audio/ringtones/TwirlAway.ogg \
     $(LOCAL_PATH)/ringtones/ogg/UrsaMinor.ogg:system/media/audio/ringtones/UrsaMinor.ogg \
     $(LOCAL_PATH)/newwavelabs/VeryAlarmed.ogg:system/media/audio/ringtones/VeryAlarmed.ogg \
@@ -209,7 +193,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ringtones/material/ogg/Callisto.ogg:system/media/audio/ringtones/Callisto.ogg \
     $(LOCAL_PATH)/ringtones/material/ogg/Dione.ogg:system/media/audio/ringtones/Dione.ogg \
     $(LOCAL_PATH)/ringtones/material/ogg/Ganymede.ogg:system/media/audio/ringtones/Ganymede.ogg \
-    $(LOCAL_PATH)/ringtones/material/ogg/Luna.ogg:system/media/audio/ringtones/Luna.ogg \
     $(LOCAL_PATH)/ringtones/material/ogg/Oberon.ogg:system/media/audio/ringtones/Oberon.ogg \
     $(LOCAL_PATH)/ringtones/material/ogg/Phobos.ogg:system/media/audio/ringtones/Phobos.ogg \
     $(LOCAL_PATH)/ringtones/material/ogg/Pyxis.ogg:system/media/audio/ringtones/PyxisMaterial.ogg \
