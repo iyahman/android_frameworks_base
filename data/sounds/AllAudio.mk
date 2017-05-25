@@ -216,7 +216,6 @@ PRODUCT_COPY_FILES += \
 #Samsung's S8 stock notification sounds
 
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/stock_lollipop/notifications/Beep_once.ogg:system/media/audio/notifications/Beep_once.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/Buzz.ogg:system/media/audio/notifications/Buzz.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/Charm.ogg:system/media/audio/notifications/Charm.ogg \
    $(LOCAL_PATH)/stock_lollipop/notifications/Clue.ogg:system/media/audio/notifications/Clue.ogg \
