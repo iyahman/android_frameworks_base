@@ -3784,10 +3784,10 @@ public final class Settings {
          */
         public static final String WAKELOCK_BLOCKING_LIST = "wakelock_blocking_list";
 
-        /**  
+        /**
          * Custom System Animations
          * @hide
-         */  
+         */
         public static final String[] ACTIVITY_ANIMATION_CONTROLS = new String[] {
                 "activity_open",
                 "activity_close",
@@ -3800,7 +3800,12 @@ public final class Settings {
                 "wallpaper_intra_open",
                 "wallpaper_intra_close",
                 "task_open_behind",
-        };  
+        };
+
+        /**
+         * Custom Animations Control Duration
+         * @hide
+         */
         public static final String ANIMATION_CONTROLS_DURATION = "animation_controls_duration";
 
         /**
