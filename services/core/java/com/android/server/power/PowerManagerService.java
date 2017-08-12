@@ -1351,7 +1351,12 @@ public final class PowerManagerService extends SystemService
             } else {
                 if (eventTime > mLastUserActivityTime) {
                     mButtonPressed = event == PowerManager.USER_ACTIVITY_EVENT_BUTTON;
-                    if (mButtonLightOnKeypressOnly && mButtonPressed) {
+                    if (eventTime == mLastWakeTime ||
+                            (mButtonLightOnKeypressOnly &&
+                                    mButtonPressed &&
+                                    (flags & PowerManager.USER_ACTIVITY_FLAG_NO_BUTTON_LIGHTS)
+                                            == 0)) {
+                        mButtonPressed = true;
                         mLastButtonActivityTime = eventTime;
                     }
                     mLastUserActivityTime = eventTime;
