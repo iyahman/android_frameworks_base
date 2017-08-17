@@ -506,9 +506,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_TICKER),
                     false, this, UserHandle.USER_ALL);
-	   resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUSBAR_CLOCK_STYLE),
-                    false, this, UserHandle.USER_ALL);
+	
             update();
         }
 
@@ -529,9 +527,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         public void update() {
             ContentResolver resolver = mContext.getContentResolver();
-            mClockLocation = Settings.System.getIntForUser(
-               resolver, Settings.System.STATUSBAR_CLOCK_STYLE, 0,
-                UserHandle.USER_CURRENT);
+  
         }
     }
 
