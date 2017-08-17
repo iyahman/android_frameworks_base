@@ -226,6 +226,11 @@
          @deprecated: use doze_pickup_subtype_performs_proximity_check instead.-->
     <bool name="doze_pickup_performs_proximity_check">false</bool>
 
+    <!-- Set to true to enable the classic notification ticker that scrolls
+         Notification.tickerText across the status bar for what seems like an
+         eternity. -->
+    <bool name="enable_ticker">true</bool>
+
     <!-- Doze: a list of pickup sensor subtypes that perform a proximity check before they trigger.
                If not empty, either * or !* must appear to specify the default.
                If empty, falls back to doze_pickup_performs_proximity_check.
