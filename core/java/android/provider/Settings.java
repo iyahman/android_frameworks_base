@@ -3892,6 +3892,19 @@ public final class Settings {
          */
 
         /**
+         * 0 for nothing
+         * 1 LONG_PRESS_HOME_ALL_APPS
+         * 2 start assist
+         * 3 show menu
+         * 4 toggle split screen
+         * 5 switch to last app
+         * 6 turn off
+         * 7 recents
+         * @hide
+         */
+        public static final String BUTTON_LONG_PRESS_HOME = "button_long_press_home";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4048,6 +4061,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_TO_APP_ENABLED);
             PRIVATE_SETTINGS.add(EGG_MODE);
             PRIVATE_SETTINGS.add(SHOW_BATTERY_PERCENT);
+            PRIVATE_SETTINGS.add(BUTTON_LONG_PRESS_HOME);
         }
 
         /**

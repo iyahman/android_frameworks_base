@@ -808,6 +808,17 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     // Maps global key codes to the components that will handle them.
     private GlobalKeyManager mGlobalKeyManager;
 
+    private int mLongPressOnHomeBehaviorCustom;
+
+    private static final int KEY_ACTION_NOTHING = 0;
+    private static final int KEY_ACTION_ALL_APPS = 1;
+    private static final int KEY_ACTION_BACK = 2;
+    private static final int KEY_ACTION_MENU = 3;
+    private static final int KEY_ACTION_SPLIT = 4;
+    private static final int KEY_ACTION_LAST_APP = 5;
+    private static final int KEY_ACTION_SLEEP = 6;
+    private static final int KEY_ACTION_APP_SWITCH = 7;
+
     // Fallback actions by key code.
     private final SparseArray<KeyCharacterMap.FallbackAction> mFallbackActions =
             new SparseArray<KeyCharacterMap.FallbackAction>();
@@ -983,6 +994,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.POLICY_CONTROL), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.BUTTON_LONG_PRESS_HOME), false, this,
+                    UserHandle.USER_ALL);
+
             updateSettings();
         }
 
@@ -1772,12 +1787,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void handleLongPressOnHome(int deviceId) {
-        if (mLongPressOnHomeBehavior == LONG_PRESS_HOME_NOTHING) {
+        if (mLongPressOnHomeBehaviorCustom == LONG_PRESS_HOME_NOTHING) {
             return;
         }
         mHomeConsumed = true;
         performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, false);
-        switch (mLongPressOnHomeBehavior) {
+        switch (mLongPressOnHomeBehaviorCustom) {
             case LONG_PRESS_HOME_ALL_APPS:
                 launchAllAppsAction();
                 break;
@@ -1785,7 +1800,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 launchAssistAction(null, deviceId);
                 break;
             default:
-                Log.w(TAG, "Undefined home long press behavior: " + mLongPressOnHomeBehavior);
+                performKeyAction(mLongPressOnHomeBehaviorCustom);
                 break;
         }
     }
@@ -2368,6 +2383,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             if (mImmersiveModeConfirmation != null) {
                 mImmersiveModeConfirmation.loadSetting(mCurrentUserId);
             }
+            mLongPressOnHomeBehaviorCustom = Settings.System.getIntForUser(resolver,
+                    Settings.System.BUTTON_LONG_PRESS_HOME, mLongPressOnHomeBehavior,
+                    UserHandle.USER_CURRENT);
         }
         synchronized (mWindowManagerFuncs.getWindowManagerLock()) {
             PolicyControl.reloadFromSetting(mContext);
@@ -3467,7 +3485,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mHomeDoubleTapPending = false;
                     mHandler.removeCallbacks(mHomeDoubleTapTimeoutRunnable);
                     handleDoubleTapOnHome();
-                } else if (mDoubleTapOnHomeBehavior == DOUBLE_TAP_HOME_RECENT_SYSTEM_UI) {
+                } else if (mLongPressOnHomeBehaviorCustom == KEY_ACTION_APP_SWITCH
+                        || mDoubleTapOnHomeBehavior == DOUBLE_TAP_HOME_RECENT_SYSTEM_UI) {
                     preloadRecentApps();
                 }
             } else if ((event.getFlags() & KeyEvent.FLAG_LONG_PRESS) != 0) {
@@ -8469,4 +8488,39 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mKeyguardDelegate.dump(prefix, pw);
         }
     }
+
+    private void triggerVirtualKeypress(final int keyCode) {
+        InputManager im = InputManager.getInstance();
+        long now = SystemClock.uptimeMillis();
+
+        final KeyEvent downEvent = new KeyEvent(now, now, KeyEvent.ACTION_DOWN,
+                keyCode, 0, 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
+                KeyEvent.FLAG_FROM_SYSTEM, InputDevice.SOURCE_KEYBOARD);
+        final KeyEvent upEvent = KeyEvent.changeAction(downEvent, KeyEvent.ACTION_UP);
+
+        im.injectInputEvent(downEvent, InputManager.INJECT_INPUT_EVENT_MODE_ASYNC);
+        im.injectInputEvent(upEvent, InputManager.INJECT_INPUT_EVENT_MODE_ASYNC);
+    }
+
+    private void performKeyAction(int behavior) {
+        if (DEBUG_INPUT){
+            Slog.d(TAG, "performKeyAction " + behavior);
+        }
+        switch (behavior) {
+            case KEY_ACTION_SLEEP:
+                mPowerManager.goToSleep(SystemClock.uptimeMillis(), PowerManager.GO_TO_SLEEP_REASON_POWER_BUTTON, 0);
+                // in the goto sleep case we wont get a up event that will reset this to the correct state
+                if (mHomePressed) {
+                    mHomeConsumed = false;
+                    mHomePressed = false;
+                }
+                break;
+            case KEY_ACTION_ALL_APPS:
+                launchAllAppsAction();
+                break;
+            default:
+                break;
+        }
+    }
+
 }
