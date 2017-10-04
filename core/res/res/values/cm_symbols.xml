@@ -32,4 +32,10 @@
     <java-symbol type="string" name="reboot_progress" />
     <java-symbol type="string" name="reboot_to_recovery_title" />
     <java-symbol type="string" name="reboot_recovery_progress" />
+
+    <!-- Advanced reboot -->
+    <java-symbol type="string" name="reboot_confirm" />
+
+    <!-- Screenshot action status message -->
+    <java-symbol type="string" name="global_actions_screenshot_status" />
 </resources>
