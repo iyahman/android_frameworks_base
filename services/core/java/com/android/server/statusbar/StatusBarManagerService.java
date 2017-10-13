@@ -772,36 +772,34 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
         }
     }
 
+    public void shutdown() {
+        shutdown(false);
+    }
+
     /**
      * Allows the status bar to reboot the device.
      */
     @Override
-    public void reboot(boolean confirm) {
+    public void reboot(boolean safeMode, boolean confirm) {
         enforceStatusBarService();
         long identity = Binder.clearCallingIdentity();
         try {
-            mHandler.post(() ->
+            mHandler.post(() -> {
+                // ShutdownThread displays UI, so give it a UI context.
+                if (safeMode) {
+                    ShutdownThread.rebootSafeMode(getUiContext(), confirm);
+                } else {
                     ShutdownThread.reboot(getUiContext(),
-                        PowerManager.SHUTDOWN_USER_REQUESTED, confirm));
+                            PowerManager.SHUTDOWN_USER_REQUESTED, confirm);
+                }
+            });
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
-    /**
-     * Allows the status bar to reboot to safe mode.
-     */
-    @Override
-    public void rebootSafeMode(boolean confirm) {
-        enforceStatusBarService();
-        long identity = Binder.clearCallingIdentity();
-        try {
-            // ShutdownThread displays UI, so give it a UI context.
-            mHandler.post(() ->
-                    ShutdownThread.rebootSafeMode(getUiContext(), confirm));
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
+    public void reboot(boolean safeMode) {
+        reboot(safeMode, false);
     }
 
     @Override
