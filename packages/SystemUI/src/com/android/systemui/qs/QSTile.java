@@ -573,9 +573,6 @@ public abstract class QSTile<TState extends State> {
         public EnforcedAdmin enforcedAdmin;
         public String minimalAccessibilityClassName;
         public String expandedAccessibilityClassName;
-	
-	public boolean visible;
-	public boolean enabled = true;
 	    
         public boolean copyTo(State other) {
             if (other == null) throw new IllegalArgumentException();
