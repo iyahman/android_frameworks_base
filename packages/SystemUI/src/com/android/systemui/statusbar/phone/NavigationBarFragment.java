@@ -449,12 +449,7 @@ public class NavigationBarFragment extends Fragment implements Callbacks {
             return false;
         }
         MetricsLogger.action(getContext(), MetricsEvent.ACTION_ASSIST_LONG_PRESS);
-
-        KeyButtonView keyButtonView = (KeyButtonView) v;
-        keyButtonView.sendEvent(KeyEvent.ACTION_DOWN, KeyEvent.FLAG_LONG_PRESS);
-        keyButtonView.sendEvent(KeyEvent.ACTION_UP, 0);
-        keyButtonView.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_LONG_CLICKED);
-
+        mAssistManager.startAssist(new Bundle() /* args */);
         mStatusBar.awakenDreams();
         if (mNavigationBarView != null) {
             mNavigationBarView.abortCurrentGesture();
