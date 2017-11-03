@@ -16,28 +16,6 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Fonts used in the MediaQueue -->
-    <style name="TextAppearance.MediaQueue">
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">roboto-regular</item>
-        <item name="android:textColor">@android:color/black</item>
-    </style>
-    <style name="TextAppearance.MediaQueue.Title">
-        <item name="android:alpha">.87</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-    <style name="TextAppearance.MediaQueue.Subtitle">
-        <item name="android:alpha">.38</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="TextAppearance.StatusBar.PhoneTicker"
-        parent="@*android:style/TextAppearance.StatusBar.Ticker">
-        <!-- Note: must be dp to fit in status bar -->
-        <item name="android:textSize">14dp</item>
-    </style>
-
-    <style name="BatteryMeterViewDrawable.Solid"/>
 
     <!-- header text shadows -->
     <style name="TextAppearance.StatusBar.Expanded.Clock.Shadow" parent="TextAppearance.StatusBar.Expanded.Clock" >
@@ -54,26 +32,6 @@
         <item name="android:shadowRadius">4</item>
     </style>
 
-    <!-- OmniJaws -->
-    <style name="TextAppearance.StatusBar.Expanded.Weather">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#ffffff</item>
-    </style>
-
-    <style name="TextAppearance.StatusBar.Expanded.Weather.Detailed">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#ffffff</item>
-    </style>
-
-    <!-- Custom Carrier Label -->
-    <style name="TextAppearance.StatusBar.CarrierLabel" parent="@*android:style/TextAppearance.StatusBar.Icon">
-        <item name="android:textSize">@dimen/status_bar_carrier_height</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/status_bar_carrier_color</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-    </style>
 
     <!-- Color engine -->
     <style name="systemui_light_theme">
