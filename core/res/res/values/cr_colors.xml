@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <resources>
-    
+
     <!-- Dynamic Navbar -->
     <color name="input_method_navigation_guard_dynamic">@color/transparent</color>
 
@@ -36,6 +36,6 @@
     <color name="yellow_accent_color">#ffc90f</color>
     <color name="purple_accent_color">#6f24d6</color>
     <color name="pink_accent_color">#ff1b70</color>
-    <color name="cyan_accent_color">#24b7d6</color>
+    <color name="cyan_accent_color">#1ddbd8</color>
     <color name="grey_accent_color">#ff5d5d5d</color>
 </resources>
