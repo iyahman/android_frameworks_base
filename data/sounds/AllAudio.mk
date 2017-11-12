@@ -212,7 +212,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/notifications/material/ogg/Tethys.ogg:system/media/audio/notifications/Tethys.ogg \
     $(LOCAL_PATH)/notifications/material/ogg/Titan.ogg:system/media/audio/notifications/Titan.ogg
 
-        
 #Samsung's S8 stock notification sounds
 
 PRODUCT_COPY_FILES += \
@@ -292,7 +291,4 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/ringtones/ogg/Stairway.ogg:system/media/audio/ringtones/Stairway.ogg \
    $(LOCAL_PATH)/ringtones/ogg/Time_Up.ogg:system/media/audio/ringtones/Time_Up.ogg \
    $(LOCAL_PATH)/ringtones/ogg/Sunset.ogg:system/media/audio/ringtones/Sunset.ogg \
-   $(LOCAL_PATH)/ringtones/ogg/Wood.ogg:system/media/audio/ringtones/Wood.ogg \
-   
-   
-	  
+   $(LOCAL_PATH)/ringtones/ogg/Wood.ogg:system/media/audio/ringtones/Wood.ogg

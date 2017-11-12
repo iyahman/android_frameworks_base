@@ -1120,7 +1120,7 @@ public abstract class Window {
     }
 
     private void setPrivateFlags(int flags, int mask) {
-        if ((flags & mask & WindowManager.LayoutParams.PRIVATE_FLAG_PREVENT_POWER_KEY) != 0){
+        if ((flags & mask & WindowManager.LayoutParams.PRIVATE_FLAG_PREVENT_POWER_KEY) != 0) {
             mContext.enforceCallingOrSelfPermission("android.permission.PREVENT_POWER_KEY",
                     "No permission to prevent power key");
         }
