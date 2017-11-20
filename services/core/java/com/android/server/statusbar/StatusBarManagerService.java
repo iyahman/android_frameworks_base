@@ -798,6 +798,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
         }
     }
 
+
     public void reboot(boolean safeMode) {
         reboot(safeMode, false);
     }
