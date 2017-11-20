@@ -19,6 +19,7 @@
 
 package com.android.server.power;
 
+import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.IActivityManager;
@@ -95,6 +96,7 @@ public final class ShutdownThread extends Thread {
     private static File RECOVERY_COMMAND_FILE = new File("/cache/recovery/command");
 
     private static boolean mReboot;
+    private static boolean mRebootWipe = false;
     private static boolean mRebootSafeMode;
     private static boolean mRebootHasProgressBar;
     private static String mReason;
@@ -249,6 +251,19 @@ public final class ShutdownThread extends Thread {
             beginShutdownSequence(context);
         }
     }
+    
+    private static void doSoftReboot() {
+        try {
+            final IActivityManager am =
+                  ActivityManagerNative.asInterface(ServiceManager.checkService("activity"));
+            if (am != null) {
+                am.restart();
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "failure trying to perform soft reboot", e);
+        }
+    }
+    
 
     private static class CloseDialogReceiver extends BroadcastReceiver
             implements DialogInterface.OnDismissListener {

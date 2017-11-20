@@ -759,14 +759,14 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
      * Allows the status bar to shutdown the device.
      */
     @Override
-    public void shutdown() {
+    public void shutdown(boolean confirm) {
         enforceStatusBarService();
         long identity = Binder.clearCallingIdentity();
         try {
             // ShutdownThread displays UI, so give it a UI context.
             mHandler.post(() ->
                     ShutdownThread.shutdown(getUiContext(),
-                        PowerManager.SHUTDOWN_USER_REQUESTED, false));
+                        PowerManager.SHUTDOWN_USER_REQUESTED, confirm));
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
