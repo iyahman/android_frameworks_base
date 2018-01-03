@@ -121,7 +121,7 @@
 
     <!-- Timeouts for brightness dialog to disappear -->
     <integer name="quick_settings_brightness_dialog_short_timeout">1000</integer>
-    <integer name="quick_settings_brightness_dialog_long_timeout">3000</integer>
+    <integer name="quick_settings_brightness_dialog_long_timeout">2000</integer>
 
    <!-- Most Devices support LTE. Hence LTE tile is visibile. Devices like Galaxy s2, s3 require this to be false -->
     <bool name="device_supports_lte">true</bool>
@@ -134,13 +134,13 @@
 
     <!-- milliseconds after a heads up notification is pushed back
      before the app can interrupt again. -->
-    <integer name="heads_up_default_snooze_length_ms">60000</integer>
+    <integer name="heads_up_default_snooze_length_ms">50000</integer>
 
     <!-- Minimum display time for a heads up notification, in milliseconds. -->
-    <integer name="heads_up_notification_minimum_time">2000</integer>
+    <integer name="heads_up_notification_minimum_time">1000</integer>
 
     <!-- milliseconds before the heads up notification accepts touches. -->
-    <integer name="touch_acceptance_delay">700</integer>
+    <integer name="touch_acceptance_delay">350</integer>
 
     <!-- The duration in seconds to wait before the dismiss buttons are shown. -->
     <integer name="recents_task_bar_dismiss_delay_seconds">0</integer>
@@ -161,13 +161,13 @@
     <integer name="recents_animate_task_stack_scroll_duration">100</integer>
 
     <!-- The animation duration for scrolling the stack to a particular item. -->
-    <integer name="recents_auto_advance_duration">450</integer>
+    <integer name="recents_auto_advance_duration">325</integer>
 
     <!-- The animation duration for subsequent scrolling the stack to a particular item. -->
-    <integer name="recents_subsequent_auto_advance_duration">1000</integer>
+    <integer name="recents_subsequent_auto_advance_duration">500</integer>
 
     <!-- The delay to enforce between each alt-tab key press. -->
-    <integer name="recents_alt_tab_key_delay">200</integer>
+    <integer name="recents_alt_tab_key_delay">100</integer>
 
     <!-- Svelte specific logic, see RecentsConfiguration.SVELTE_* constants. -->
     <integer name="recents_svelte_level">0</integer>
@@ -273,10 +273,10 @@
     <bool name="enable_volume_ui">true</bool>
 
     <!-- Duration of the full carrier network change icon animation. -->
-    <integer name="carrier_network_change_anim_time">3000</integer>
+    <integer name="carrier_network_change_anim_time">2000</integer>
 
     <!-- Duration of the expansion animation in the volume dialog -->
-    <item name="volume_expand_animation_duration" type="integer">300</item>
+    <item name="volume_expand_animation_duration" type="integer">100</item>
 
     <!-- Whether to show the full screen user switcher. -->
     <bool name="config_enableFullscreenUserSwitcher">false</bool>
